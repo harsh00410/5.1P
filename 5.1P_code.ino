@@ -3,7 +3,7 @@ import tkinter as tk
 
 # Set up GPIO pins (change the pin numbers if needed)
 GPIO.setmode(GPIO.BCM)
-LED_PINS = {'yellow': 17, 'purple': 27, 'blue': 22}
+LED_PINS = {'Red': 17, 'White': 27, 'Green': 22}
 
 for pin in LED_PINS.values():
     GPIO.setup(pin, GPIO.OUT)
@@ -27,24 +27,24 @@ root = tk.Tk()
 root.title("LED Color Mixer")
 
 # Add checkbuttons to select multiple LEDs
-yellow_var = tk.IntVar()
-purple_var = tk.IntVar()
-blue_var = tk.IntVar()
+Red_var = tk.IntVar()
+White_var = tk.IntVar()
+Green_var = tk.IntVar()
 
 def update_leds():
     selected_colors = []
-    if yellow_var.get():
-        selected_colors.append('yellow')
-    if purple_var.get():
-        selected_colors.append('purple')
-    if blue_var.get():
-        selected_colors.append('blue')
+    if Red_var.get():
+        selected_colors.append('Red')
+    if White_var.get():
+        selected_colors.append('White')
+    if Green_var.get():
+        selected_colors.append('Green')
     turn_on_led(selected_colors)
 
 # Checkbuttons for selecting colors
-tk.Checkbutton(root, text="Yellow LED", variable=yellow_var, command=update_leds).pack(anchor=tk.W)
-tk.Checkbutton(root, text="Purple LED", variable=purple_var, command=update_leds).pack(anchor=tk.W)
-tk.Checkbutton(root, text="blue LED", variable=blue_var, command=update_leds).pack(anchor=tk.W)
+tk.Checkbutton(root, text="Red LED", variable=Red_var, command=update_leds).pack(anchor=tk.W)
+tk.Checkbutton(root, text="White LED", variable=White_var, command=update_leds).pack(anchor=tk.W)
+tk.Checkbutton(root, text="Green LED", variable=Green_var, command=update_leds).pack(anchor=tk.W)
 
 # Add an exit button
 tk.Button(root, text="Exit", command=exit_app).pack()
